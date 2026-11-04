@@ -2,7 +2,7 @@
 
 Plataforma web gamificada de hábitos sustentáveis. O usuário cuida de uma planta virtual (o Soulie), cumpre missões validadas por foto, participa de um jardim comunitário e conversa com a Soulie IA.
 
-Este repositório é o **front-end** da Sprint 04 (Front-End Design Engineering — FIAP), em React + Vite + TypeScript, consumindo a API Java do grupo.
+Este repositório é o **front-end** da Sprint 04 (Front-End Design Engineering — FIAP), em React + Vite + TypeScript, consumindo a API Java do grupo (Domain Driven Design Using Java).
 
 ## Tecnologias utilizadas
 
@@ -20,7 +20,7 @@ Este repositório é o **front-end** da Sprint 04 (Front-End Design Engineering 
 ## Estrutura de pastas
 
 ```
-soulie-web/
+Soulie-project-v3/
 ├── public/                 # fotos da equipe, hero, screenshots
 ├── src/
 │   ├── api/                # client HTTP e endpoints
@@ -55,7 +55,7 @@ Disciplina: Front-End Design Engineering
 
 ![Dashboard](public/Captura%20de%20tela%20Dashboard.png)
 
-*Dashboard (Sprint 03 — o v3 liga essa tela à API)*
+*Dashboard integrado à API Java*
 
 ![Sobre](public/Captura%20de%20tela%20Sobre.png)
 
@@ -66,15 +66,15 @@ Disciplina: Front-End Design Engineering
 ### Pré-requisitos
 
 - Node.js 18+
-- A API Java do Soulie no ar (local na porta 8080 ou URL remota)
+- API Java do Soulie publicada (ou rodando local na porta 8080)
 
 ### Instalação
 
 ```bash
-git clone <URL_DO_GITHUB>
-cd soulie-web
+git clone https://github.com/Nexus-Solution-FIAP/Soulie-project-v3.git
+cd Soulie-project-v3
 cp .env.example .env
-# ajuste VITE_API_URL se a API não estiver em http://localhost:8080
+# ajuste VITE_API_URL para a URL remota da API (ou mantenha http://localhost:8080)
 npm install
 npm run dev
 ```
@@ -85,8 +85,8 @@ Senha de exemplo da API: `Soulie@2026` (8 caracteres, maiúscula, minúscula, n�
 
 ### Links da entrega
 
-- Repositório GitHub: _preencher após o deploy_
-- Vídeo no YouTube (até 3 min): _preencher após a gravação_
+- Repositório GitHub: [https://github.com/Nexus-Solution-FIAP/Soulie-project-v3](https://github.com/Nexus-Solution-FIAP/Soulie-project-v3)
+- Vídeo no YouTube: https://youtu.be/743BkBS8Bsw
 - Front na Vercel: _preencher após o deploy_
 - **API Java publicada:** _preencher com a URL remota_ (ex.: Render)
 
