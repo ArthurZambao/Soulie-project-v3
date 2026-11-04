@@ -106,8 +106,8 @@ export function Dashboard() {
   return (
     <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-10">
       <header className="mb-8">
-        <h1 className="font-display text-2xl sm:text-3xl font-bold text-white">Olá, {user?.name?.split(' ')[0] ?? 'Guardião'}!</h1>
-        <p className="text-gray-400">Seu resumo ecológico de hoje.</p>
+        <h1 className="font-display text-2xl sm:text-3xl font-bold text-nature-ink">Olá, {user?.name?.split(' ')[0] ?? 'Guardião'}!</h1>
+        <p className="text-nature-muted">Seu resumo ecológico de hoje.</p>
       </header>
 
       {toast && <p className="mb-4 rounded-lg bg-nature-brand/10 border border-nature-brand/30 px-4 py-2 text-sm text-nature-brand">{toast}</p>}
@@ -119,9 +119,9 @@ export function Dashboard() {
             <Card>
               <div className="absolute inset-0 z-0">
                 <img src="/plant-bg.jpeg" alt="" className="w-full h-full object-cover" />
-                <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-nature-surface/80 to-nature-surface" />
+                <div className="absolute inset-0 bg-gradient-to-b from-slate-900/35 via-nature-surface/85 to-nature-surface" />
               </div>
-              <button type="button" onClick={() => setConfig(true)} className="absolute top-4 right-4 z-20 p-2 rounded-full bg-black/30 text-gray-300" aria-label="Configurar">
+              <button type="button" onClick={() => setConfig(true)} className="absolute top-4 right-4 z-20 p-2 rounded-full bg-white/80 text-nature-ink shadow-soft" aria-label="Configurar">
                 <Settings className="w-5 h-5" />
               </button>
               <div className="relative z-10 flex flex-col items-center py-4">
@@ -153,12 +153,12 @@ export function Dashboard() {
                     </span>
                   ))}
                 </button>
-                <h3 className="text-xl font-bold text-white mt-3">{soulie.name}</h3>
-                <p className="text-xs text-gray-400 mt-2">{soulie.levelName} · {soulie.wateredToday ? 'Regado hoje' : 'Ainda não regou'}</p>
+                <h3 className="text-xl font-bold text-nature-ink mt-3">{soulie.name}</h3>
+                <p className="text-xs text-nature-muted mt-2">{soulie.levelName} · {soulie.wateredToday ? 'Regado hoje' : 'Ainda não regou'}</p>
                 <div className="w-full mt-4">
                   <div className="flex justify-between text-sm mb-2">
-                    <span className="text-gray-400">XP</span>
-                    <span className="font-mono text-blue-400">{soulie.xp} / {soulie.nextLevelXp || soulie.xp}</span>
+                    <span className="text-nature-muted">XP</span>
+                    <span className="font-mono text-nature-brand">{soulie.xp} / {soulie.nextLevelXp || soulie.xp}</span>
                   </div>
                   <div className="h-3 rounded-full bg-nature-border overflow-hidden">
                     <div className="h-full bg-blue-500" style={{ width: `${soulie.nextLevelXp ? Math.min(100, (soulie.xp / soulie.nextLevelXp) * 100) : 100}%` }} />
@@ -166,16 +166,16 @@ export function Dashboard() {
                 </div>
                 <div className="grid grid-cols-3 gap-2 w-full mt-5">
                   <div className="bg-nature-bg rounded-xl p-3 text-center shadow-soft">
-                    <p className="font-mono text-white font-bold">{stats?.streakDays ?? 0}d</p>
-                    <p className="text-xs text-gray-500">Streak</p>
+                    <p className="font-mono text-nature-ink font-bold">{stats?.streakDays ?? 0}d</p>
+                    <p className="text-xs text-nature-muted">Streak</p>
                   </div>
                   <div className="bg-nature-bg rounded-xl p-3 text-center shadow-soft">
-                    <p className="font-mono text-white font-bold">{stats?.totalXp ?? soulie.xp}</p>
-                    <p className="text-xs text-gray-500">XP total</p>
+                    <p className="font-mono text-nature-ink font-bold">{stats?.totalXp ?? soulie.xp}</p>
+                    <p className="text-xs text-nature-muted">XP total</p>
                   </div>
                   <div className="bg-nature-bg rounded-xl p-3 text-center shadow-soft">
-                    <p className="font-mono text-white font-bold">#{stats?.globalRank ?? '—'}</p>
-                    <p className="text-xs text-gray-500">Rank</p>
+                    <p className="font-mono text-nature-ink font-bold">#{stats?.globalRank ?? '—'}</p>
+                    <p className="text-xs text-nature-muted">Rank</p>
                   </div>
                 </div>
                 <button type="button" onClick={() => void onWater()} className="mt-5 w-full flex items-center justify-center gap-2 py-2.5 rounded-xl bg-nature-accent/15 text-nature-accent shadow-soft">
@@ -189,12 +189,12 @@ export function Dashboard() {
             <Card title="Impacto" variant="success">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 <div className="flex items-center justify-between gap-3 min-w-0 p-3 rounded-lg bg-nature-bg shadow-soft">
-                  <span className="text-gray-300 shrink-0">CO₂ evitado</span>
-                  <strong className="font-mono text-white text-right break-all min-w-0">{stats?.co2SavedKg ?? 0} kg</strong>
+                  <span className="text-nature-ink-soft shrink-0">CO₂ evitado</span>
+                  <strong className="font-mono text-nature-ink text-right break-all min-w-0">{stats?.co2SavedKg ?? 0} kg</strong>
                 </div>
                 <div className="flex items-center justify-between gap-3 min-w-0 p-3 rounded-lg bg-nature-bg shadow-soft">
-                  <span className="text-gray-300 shrink-0">Água poupada</span>
-                  <strong className="font-mono text-white text-right break-all min-w-0">{stats?.waterSavedLiters ?? 0} L</strong>
+                  <span className="text-nature-ink-soft shrink-0">Água poupada</span>
+                  <strong className="font-mono text-nature-ink text-right break-all min-w-0">{stats?.waterSavedLiters ?? 0} L</strong>
                 </div>
               </div>
             </Card>
@@ -209,12 +209,12 @@ export function Dashboard() {
                     className={`flex items-center justify-between p-4 rounded-xl shadow-soft ${mission.done ? 'bg-nature-brand/10' : 'bg-nature-bg hover:shadow-card'}`}
                   >
                     <div>
-                      <h4 className="font-medium text-white">{mission.emoji} {mission.name}</h4>
+                      <h4 className="font-medium text-nature-ink">{mission.emoji} {mission.name}</h4>
                       <div className="mt-1.5 flex items-center gap-2">
                         <span className={`text-[10px] font-semibold uppercase tracking-wide px-2 py-0.5 rounded-full border ${missionTagClass(mission.tag)}`}>
                           {mission.tag}
                         </span>
-                        <span className="text-xs text-gray-500 uppercase">{mission.period}</span>
+                        <span className="text-xs text-nature-muted uppercase">{mission.period}</span>
                       </div>
                     </div>
                     <span className="font-mono text-sm text-nature-brand">+{mission.xp} XP</span>
@@ -235,7 +235,7 @@ export function Dashboard() {
                 </button>
               )}
               <div className="mt-8">
-                <p className="text-xs uppercase tracking-wide text-gray-500 mb-4 text-center">Caminho da evolução</p>
+                <p className="text-xs uppercase tracking-wide text-nature-muted mb-4 text-center">Caminho da evolução</p>
                 <div className="flex items-center">
                   {EVOLUTION.map((stage, i) => {
                     const current = soulie.level === stage.level;
@@ -244,11 +244,11 @@ export function Dashboard() {
                       <Fragment key={stage.level}>
                         {i > 0 && (
                           <ChevronRight
-                            className={`w-5 h-5 shrink-0 mx-0.5 sm:mx-1 ${done || current ? 'text-nature-brand' : 'text-gray-600'}`}
+                            className={`w-5 h-5 shrink-0 mx-0.5 sm:mx-1 ${done || current ? 'text-nature-brand' : 'text-nature-muted'}`}
                             aria-hidden
                           />
                         )}
-                        <div className={`flex flex-1 min-w-0 flex-col items-center text-center ${current ? 'text-nature-brand' : done ? 'text-nature-accent' : 'text-gray-600'}`}>
+                        <div className={`flex flex-1 min-w-0 flex-col items-center text-center ${current ? 'text-nature-brand' : done ? 'text-nature-accent' : 'text-nature-muted'}`}>
                           <div
                             className={`w-11 h-11 rounded-full flex items-center justify-center text-lg mb-1.5 ${
                               current
@@ -288,23 +288,23 @@ export function Dashboard() {
                     <Settings className="w-5 h-5" />
                   </span>
                   <div>
-                    <h2 className="font-display text-xl text-white">Configurar Soulie</h2>
-                    <p className="text-xs text-gray-500">Nome, espécie e código secreto</p>
+                    <h2 className="font-display text-xl text-nature-ink">Configurar Soulie</h2>
+                    <p className="text-xs text-nature-muted">Nome, espécie e código secreto</p>
                   </div>
                 </div>
                 <button type="button" onClick={() => setConfig(false)} className="p-2 rounded-full hover:bg-nature-bg" aria-label="Fechar">
-                  <X className="w-5 h-5 text-gray-400" />
+                  <X className="w-5 h-5 text-nature-muted" />
                 </button>
               </div>
-              <label className="block text-sm text-gray-300">
+              <label className="block text-sm text-nature-ink-soft">
                 Nome
                 <input
                   value={editName}
                   onChange={(e) => setEditName(e.target.value)}
-                  className="mt-1.5 w-full bg-nature-bg border border-nature-border rounded-xl px-4 py-3 text-white"
+                  className="mt-1.5 w-full bg-nature-bg border border-nature-border rounded-xl px-4 py-3 text-nature-ink"
                 />
               </label>
-              <p className="text-sm text-gray-300">Espécie</p>
+              <p className="text-sm text-nature-ink-soft">Espécie</p>
             </div>
 
             <div className="px-5 sm:px-6 overflow-y-auto min-h-0 space-y-4">
@@ -338,8 +338,8 @@ export function Dashboard() {
                             }
                       }
                     >
-                      <span className={`flex items-center gap-1.5 text-sm font-medium leading-snug ${locked ? 'text-gray-500' : ''}`}>
-                        {locked && <Lock className="w-3.5 h-3.5 shrink-0 text-gray-500" />}
+                      <span className={`flex items-center gap-1.5 text-sm font-medium leading-snug ${locked ? 'text-nature-muted' : ''}`}>
+                        {locked && <Lock className="w-3.5 h-3.5 shrink-0 text-nature-muted" />}
                         <span className="truncate" style={locked ? undefined : { color: accent }}>
                           {flowerDisplayName(p.id)}
                         </span>
@@ -351,19 +351,19 @@ export function Dashboard() {
                   );
                 })}
               </div>
-              <label className="block text-sm text-gray-300 pb-1">
+              <label className="block text-sm text-nature-ink-soft pb-1">
                 Código secreto
                 <input
                   value={code}
                   onChange={(e) => setCode(e.target.value)}
                   placeholder="opcional — desbloqueia uma espécie"
-                  className="mt-1.5 w-full bg-nature-bg border border-nature-border rounded-xl px-4 py-3 text-white"
+                  className="mt-1.5 w-full bg-nature-bg border border-nature-border rounded-xl px-4 py-3 text-nature-ink"
                 />
               </label>
             </div>
 
             <div className="px-5 sm:px-6 py-4 flex justify-end gap-3">
-              <button type="button" onClick={() => setConfig(false)} className="px-4 py-2.5 rounded-xl text-gray-300 hover:bg-nature-bg">
+              <button type="button" onClick={() => setConfig(false)} className="px-4 py-2.5 rounded-xl text-nature-ink-soft hover:bg-nature-bg">
                 Cancelar
               </button>
               <button type="button" onClick={() => void saveConfig()} className="px-5 py-2.5 rounded-xl btn-brand">

@@ -60,9 +60,9 @@ export function RecompensaDetail() {
 
   return (
     <div className="max-w-xl mx-auto px-4 py-10">
-      <Link to="/recompensas" className="text-gray-400">← Catálogo</Link>
+      <Link to="/recompensas" className="text-nature-muted">← Catálogo</Link>
       <Card className="mt-6" variant="brand" title={item.benefits}>
-        <p className="text-gray-300">Custo: <span className="font-mono text-white">{item.cost} pontos</span></p>
+        <p className="text-nature-ink-soft">Custo: <span className="font-mono text-nature-ink">{item.cost} pontos</span></p>
         {msg && <p className="mt-4 text-sm text-nature-accent">{msg}</p>}
         <button type="button" disabled={busy} onClick={() => void redeem()} className="mt-6 px-5 py-2.5 rounded-xl btn-brand disabled:opacity-50">
           {busy ? 'Resgatando...' : 'Resgatar'}

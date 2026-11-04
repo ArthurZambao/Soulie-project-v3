@@ -25,8 +25,8 @@ function NotFound() {
       <div className="w-24 h-24 bg-nature-surface rounded-full flex items-center justify-center mb-6 shadow-card">
         <span className="text-4xl">🌱</span>
       </div>
-      <h2 className="text-3xl font-bold text-white mb-4">Página não encontrada</h2>
-      <p className="text-gray-400 max-w-md mb-8">Esse caminho não existe no jardim.</p>
+      <h2 className="text-3xl font-bold text-nature-ink mb-4">Página não encontrada</h2>
+      <p className="text-nature-muted max-w-md mb-8">Esse caminho não existe no jardim.</p>
       <Link to="/" className="px-6 py-3 rounded-lg btn-brand">Voltar ao início</Link>
     </div>
   );

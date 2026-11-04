@@ -33,46 +33,46 @@ export function Cadastro() {
     }
   };
 
-  const field = 'w-full bg-nature-bg border rounded-lg px-4 py-3 text-white';
+  const field = 'w-full bg-nature-bg border rounded-lg px-4 py-3 text-nature-ink';
 
   return (
     <div className="max-w-md mx-auto px-4 py-12 sm:py-16">
-      <h1 className="font-display text-3xl font-bold text-white mb-2">Criar conta</h1>
-      <p className="text-gray-400 mb-6">A senha precisa de 8 caracteres, maiúscula, minúscula, número e um símbolo @$!%*?&.</p>
+      <h1 className="font-display text-3xl font-bold text-nature-ink mb-2">Criar conta</h1>
+      <p className="text-nature-muted mb-6">A senha precisa de 8 caracteres, maiúscula, minúscula, número e um símbolo @$!%*?&.</p>
       <Card variant="brand">
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-4" noValidate>
-          {error && <p className="text-sm text-red-400">{error}</p>}
+          {error && <p className="text-sm text-red-600">{error}</p>}
           <div>
-            <label htmlFor="name" className="text-sm text-gray-300">Nome</label>
+            <label htmlFor="name" className="text-sm text-nature-ink-soft">Nome</label>
             <input id="name" className={`${field} ${errors.name ? 'border-red-500' : 'border-nature-border'}`} {...register('name', { required: 'Informe o nome', minLength: { value: 2, message: 'Nome muito curto' } })} />
-            {errors.name && <p className="text-sm text-red-400 mt-1">{errors.name.message}</p>}
+            {errors.name && <p className="text-sm text-red-600 mt-1">{errors.name.message}</p>}
           </div>
           <div>
-            <label htmlFor="email" className="text-sm text-gray-300">E-mail</label>
+            <label htmlFor="email" className="text-sm text-nature-ink-soft">E-mail</label>
             <input id="email" type="email" className={`${field} ${errors.email ? 'border-red-500' : 'border-nature-border'}`} {...register('email', { required: 'Informe o e-mail' })} />
-            {errors.email && <p className="text-sm text-red-400 mt-1">{errors.email.message}</p>}
+            {errors.email && <p className="text-sm text-red-600 mt-1">{errors.email.message}</p>}
           </div>
           <div>
-            <label htmlFor="password" className="text-sm text-gray-300">Senha</label>
+            <label htmlFor="password" className="text-sm text-nature-ink-soft">Senha</label>
             <div className="relative">
               <input id="password" type={showPassword ? 'text' : 'password'} className={`${field} pr-12 ${errors.password ? 'border-red-500' : 'border-nature-border'}`} {...register('password', { required: 'Informe a senha', pattern: { value: PASSWORD_RULE, message: 'A senha precisa de 8 caracteres, com maiúscula, minúscula, número e um símbolo (@$!%*?&).' } })} />
               <button
                 type="button"
                 onClick={() => setShowPassword((visible) => !visible)}
-                className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-white"
+                className="absolute right-3 top-1/2 -translate-y-1/2 text-nature-muted hover:text-nature-ink"
                 aria-label={showPassword ? 'Ocultar senha' : 'Ver senha'}
                 aria-pressed={showPassword}
               >
                 {showPassword ? <EyeOff size={18} aria-hidden="true" /> : <Eye size={18} aria-hidden="true" />}
               </button>
             </div>
-            {errors.password && <p className="text-sm text-red-400 mt-1">{errors.password.message}</p>}
+            {errors.password && <p className="text-sm text-red-600 mt-1">{errors.password.message}</p>}
           </div>
           <button type="submit" disabled={isSubmitting} className="w-full py-3 rounded-lg btn-brand font-semibold disabled:opacity-50">
             {isSubmitting ? 'Criando...' : 'Cadastrar'}
           </button>
         </form>
-        <p className="text-sm text-gray-400 mt-4">
+        <p className="text-sm text-nature-muted mt-4">
           Já tem conta? <Link to="/login" className="text-nature-brand">Entrar</Link>
         </p>
       </Card>

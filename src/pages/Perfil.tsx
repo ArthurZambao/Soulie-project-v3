@@ -37,9 +37,9 @@ export function Perfil() {
 
   return (
     <div className="max-w-4xl mx-auto px-4 sm:px-6 py-10">
-      <h1 className="font-display text-3xl font-bold text-white">{user?.name}</h1>
-      <p className="text-gray-400">{user?.handle} · {user?.email}</p>
-      <p className="text-xs text-gray-500 mt-1">{user?.memberSince}</p>
+      <h1 className="font-display text-3xl font-bold text-nature-ink">{user?.name}</h1>
+      <p className="text-nature-muted">{user?.handle} · {user?.email}</p>
+      <p className="text-xs text-nature-muted mt-1">{user?.memberSince}</p>
 
       <div className="flex flex-wrap gap-2 mt-6 mb-6">
         {tabs.map((t) => (
@@ -47,7 +47,7 @@ export function Perfil() {
             key={t.id}
             type="button"
             onClick={() => setTab(t.id)}
-            className={`px-4 py-2 rounded-lg text-sm ${tab === t.id ? 'btn-brand' : 'bg-nature-surface text-gray-300 shadow-soft'}`}
+            className={`px-4 py-2 rounded-lg text-sm ${tab === t.id ? 'btn-brand' : 'bg-nature-surface text-nature-ink-soft shadow-soft'}`}
           >
             {t.label}
           </button>
@@ -73,8 +73,8 @@ export function Perfil() {
             <Card key={stat.label}>
               <div className="flex items-start justify-between gap-3">
                 <div className="min-w-0">
-                  <p className="text-xs text-gray-500">{stat.label}</p>
-                  <p className="font-mono text-xl text-white mt-1 truncate">{stat.value}</p>
+                  <p className="text-xs text-nature-muted">{stat.label}</p>
+                  <p className="font-mono text-xl text-nature-ink mt-1 truncate">{stat.value}</p>
                 </div>
                 <span className={`shrink-0 p-2 rounded-xl ${stat.tone}`}>
                   <stat.icon className="w-5 h-5" />
@@ -85,7 +85,7 @@ export function Perfil() {
           <div className="col-span-2 md:col-span-4">
             <Card title="Atividades recentes">
               <PageStatus empty={activities.length === 0} emptyText="Sem atividades ainda." />
-              <ul className="space-y-2 text-sm text-gray-300">
+              <ul className="space-y-2 text-sm text-nature-ink-soft">
                 {activities.slice(0, 8).map((a) => (
                   <li key={a.id}>{a.emoji} {a.label} · +{a.xp} · {a.date}</li>
                 ))}
@@ -100,9 +100,9 @@ export function Perfil() {
           <PageStatus empty={achievements.length === 0} emptyText="Nenhuma conquista cadastrada." />
           {achievements.map((a) => (
             <Card key={a.id} variant={a.unlocked ? 'success' : 'default'}>
-              <p className="text-white font-medium">{a.name}</p>
-              <p className="text-sm text-gray-400 mt-1">{a.desc}</p>
-              <p className="text-xs text-gray-500 mt-2">{a.progress} · {a.unlocked ? a.date : 'bloqueada'}</p>
+              <p className="text-nature-ink font-medium">{a.name}</p>
+              <p className="text-sm text-nature-muted mt-1">{a.desc}</p>
+              <p className="text-xs text-nature-muted mt-2">{a.progress} · {a.unlocked ? a.date : 'bloqueada'}</p>
             </Card>
           ))}
         </div>
@@ -172,17 +172,17 @@ function SocialPanel() {
 
   return (
     <div className="space-y-6">
-      {msg && <p className="text-sm text-red-400">{msg}</p>}
+      {msg && <p className="text-sm text-red-600">{msg}</p>}
       <div className="flex flex-col sm:flex-row gap-2">
-        <input value={handle} onChange={(e) => setHandle(e.target.value)} placeholder="@handle" className="flex-1 bg-nature-bg border border-nature-border rounded-lg px-3 py-2 text-white" />
+        <input value={handle} onChange={(e) => setHandle(e.target.value)} placeholder="@handle" className="flex-1 bg-nature-bg border border-nature-border rounded-lg px-3 py-2 text-nature-ink" />
         <button type="button" onClick={() => void search()} className="px-4 py-2 rounded-lg btn-brand">Buscar</button>
       </div>
       {found && (
         <Card>
-          <p className="text-white">{found.name} {found.handle}</p>
-          <p className="text-sm text-gray-400">{found.points} pts {found.friend ? '· amigo' : ''}</p>
+          <p className="text-nature-ink">{found.name} {found.handle}</p>
+          <p className="text-sm text-nature-muted">{found.points} pts {found.friend ? '· amigo' : ''}</p>
           <button type="button" onClick={() => void follow(found.id, true)} className="mt-3 text-sm text-nature-brand">Seguir</button>
-          <button type="button" onClick={() => void follow(found.id, false)} className="mt-3 ml-3 text-sm text-gray-400">Deixar de seguir</button>
+          <button type="button" onClick={() => void follow(found.id, false)} className="mt-3 ml-3 text-sm text-nature-muted">Deixar de seguir</button>
         </Card>
       )}
       {[
@@ -193,7 +193,7 @@ function SocialPanel() {
         <Card key={title as string} title={title as string}>
           <PageStatus empty={(list as SocialUserResponse[]).length === 0} emptyText="Lista vazia." />
           {(list as SocialUserResponse[]).map((u) => (
-            <p key={u.id} className="text-sm text-gray-300 py-1">{u.name} {u.handle}</p>
+            <p key={u.id} className="text-sm text-nature-ink-soft py-1">{u.name} {u.handle}</p>
           ))}
         </Card>
       ))}
@@ -241,7 +241,7 @@ function AccountPanel({
         ['allowNudges', 'Permitir cutucadas'],
         ['showFullName', 'Mostrar nome completo'],
       ] as const).map(([key, labelText]) => (
-        <label key={key} className="flex items-center justify-between py-2 text-sm text-gray-300">
+        <label key={key} className="flex items-center justify-between py-2 text-sm text-nature-ink-soft">
           {labelText}
           <input type="checkbox" checked={form[key]} onChange={(e) => setForm({ ...form, [key]: e.target.checked })} />
         </label>
@@ -249,18 +249,18 @@ function AccountPanel({
       <button type="button" onClick={() => void save()} className="mt-4 px-4 py-2 rounded-lg btn-brand">Salvar</button>
 
       <div className="mt-6 flex gap-2">
-        <input value={label} onChange={(e) => setLabel(e.target.value)} placeholder="Registrar atividade extra" className="flex-1 bg-nature-bg border border-nature-border rounded-lg px-3 py-2 text-white text-sm" />
+        <input value={label} onChange={(e) => setLabel(e.target.value)} placeholder="Registrar atividade extra" className="flex-1 bg-nature-bg border border-nature-border rounded-lg px-3 py-2 text-nature-ink text-sm" />
         <button type="button" onClick={() => { if (label.trim()) void onActivity(label.trim()); setLabel(''); }} className="text-sm text-nature-brand">+ XP</button>
       </div>
 
       <div className="mt-6 flex flex-wrap gap-3">
-        <button type="button" onClick={() => void download()} className="text-sm text-gray-300 bg-nature-bg rounded-lg px-4 py-2 shadow-soft">Baixar meus dados</button>
+        <button type="button" onClick={() => void download()} className="text-sm text-nature-ink-soft bg-nature-bg rounded-lg px-4 py-2 shadow-soft">Baixar meus dados</button>
         <button
           type="button"
           onClick={() => {
             if (confirm('Excluir a conta? Essa ação desativa o perfil.')) void onDelete();
           }}
-          className="text-sm text-red-400 bg-red-500/10 rounded-lg px-4 py-2 shadow-soft"
+          className="text-sm text-red-600 bg-red-500/10 rounded-lg px-4 py-2 shadow-soft"
         >
           Excluir conta
         </button>
