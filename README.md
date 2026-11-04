@@ -73,3 +73,23 @@ export default defineConfig([
 ])
 
 ```
+
+## Imagens do projeto
+
+![Home](public/Captura%20de%20tela%20Home.png)
+
+*Página inicial*
+
+![Dashboard](public/Captura%20de%20tela%20Dashboard.png)
+
+*Dashboard (Sprint 03 — o v3 liga essa tela à API)*
+
+![Sobre](public/Captura%20de%20tela%20Sobre.png)
+
+*Sobre o projeto*
+
+## Contato
+
+- E-mail: nathantoneto@gmail.com
+- Telefone: +55 11 94809-9001
+- Formulário: rota `/contato`
