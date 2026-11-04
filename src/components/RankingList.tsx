@@ -18,7 +18,7 @@ function RankMark({ pos }: { pos: number }) {
   if (pos === 1) return <Trophy className="w-5 h-5 text-yellow-400" />;
   if (pos === 2) return <Medal className="w-5 h-5 text-slate-300" />;
   if (pos === 3) return <Medal className="w-5 h-5 text-amber-600" />;
-  return <span className="text-sm font-mono text-gray-500">#{pos}</span>;
+  return <span className="text-sm font-mono text-nature-muted">#{pos}</span>;
 }
 
 function rowTone(pos: number, isYou: boolean) {
@@ -56,7 +56,7 @@ export function RankingList({ ranking, onNudge }: { ranking: RankingItemResponse
 
             <div className="min-w-0 flex-1">
               <div className="flex items-center gap-2 min-w-0">
-                <p className={`font-medium truncate ${row.isYou ? 'text-nature-brand' : 'text-white'}`}>{row.name}</p>
+                <p className={`font-medium truncate ${row.isYou ? 'text-nature-brand' : 'text-nature-ink'}`}>{row.name}</p>
                 {row.isYou && (
                   <span className="shrink-0 text-[10px] uppercase tracking-wide px-2 py-0.5 rounded-full bg-nature-brand/20 text-nature-brand">
                     você
@@ -72,7 +72,7 @@ export function RankingList({ ranking, onNudge }: { ranking: RankingItemResponse
             </div>
 
             <div className="flex flex-col items-end shrink-0">
-              <p className="font-mono text-white font-semibold text-sm">{row.xp} XP</p>
+              <p className="font-mono text-nature-ink font-semibold text-sm">{row.xp} XP</p>
               <p className="text-xs text-orange-400 flex items-center gap-1 mt-0.5">
                 <Flame className="w-3 h-3" /> {row.streak}d
               </p>

@@ -32,8 +32,8 @@ export function Layout({ children }: { children: ReactNode }) {
       <main id="main-content" className={`flex-grow flex flex-col relative w-full ${isChat ? 'min-h-0 overflow-hidden' : ''}`} tabIndex={-1}>
         {!isChat && (
           <div className="absolute inset-0 overflow-hidden pointer-events-none -z-10" aria-hidden>
-            <div className="absolute top-[-10%] left-[-10%] w-[50%] h-[40%] rounded-full bg-nature-brand/5 blur-[120px]" />
-            <div className="absolute bottom-[-10%] right-[-10%] w-[40%] h-[30%] rounded-full bg-nature-accent/5 blur-[120px]" />
+            <div className="absolute top-[-10%] left-[-10%] w-[50%] h-[40%] rounded-full bg-nature-brand/15 blur-[120px]" />
+            <div className="absolute bottom-[-10%] right-[-10%] w-[40%] h-[30%] rounded-full bg-nature-accent/12 blur-[120px]" />
           </div>
         )}
         {children}

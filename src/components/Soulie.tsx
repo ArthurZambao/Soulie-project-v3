@@ -481,7 +481,7 @@ export function Soulie({
         {renderStage()}
       </div>
       {showMoodLabel && (
-        <span className="mt-2 text-xs text-gray-400 font-medium tracking-wide">
+        <span className="mt-2 text-xs text-nature-muted font-medium tracking-wide">
           {moodLabel[mood]}
         </span>
       )}

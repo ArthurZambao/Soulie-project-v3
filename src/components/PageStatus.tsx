@@ -12,7 +12,7 @@ export function PageStatus({ loading, error, empty, emptyText = 'Nada por aqui a
   if (loading) {
     return (
       skeleton ?? (
-        <div className="flex items-center justify-center py-16 text-gray-400 gap-3">
+        <div className="flex items-center justify-center py-16 text-nature-muted gap-3">
           <div className="w-5 h-5 border-2 border-nature-brand/30 border-t-nature-brand rounded-full animate-spin" />
           Carregando...
         </div>
@@ -22,14 +22,14 @@ export function PageStatus({ loading, error, empty, emptyText = 'Nada por aqui a
 
   if (error) {
     return (
-      <div className="rounded-xl border border-red-500/30 bg-red-500/10 px-4 py-3 text-sm text-red-300">
+      <div className="rounded-xl border border-red-500/30 bg-red-500/10 px-4 py-3 text-sm text-red-600">
         {error}
       </div>
     );
   }
 
   if (empty) {
-    return <p className="text-center text-gray-500 py-10">{emptyText}</p>;
+    return <p className="text-center text-nature-muted py-10">{emptyText}</p>;
   }
 
   return null;

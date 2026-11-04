@@ -28,11 +28,11 @@ export function Card({
     accent: { iconColor: 'text-nature-accent' },
     warning: { iconColor: 'text-yellow-500' },
     danger: { iconColor: 'text-red-500' },
-    default: { iconColor: 'text-gray-400' },
+    default: { iconColor: 'text-nature-muted' },
   }[variant];
 
   return (
-    <div className={`relative bg-nature-surface rounded-2xl overflow-hidden flex flex-col shadow-card ${interactive ? 'transition-all duration-300 cursor-pointer hover:-translate-y-1 hover:shadow-card-hover' : ''} ${className}`}>
+    <div className={`relative bg-nature-surface rounded-2xl overflow-hidden flex flex-col border border-nature-border/70 shadow-card ${interactive ? 'transition-all duration-300 cursor-pointer hover:-translate-y-1 hover:shadow-card-hover hover:border-nature-brand/30' : ''} ${className}`}>
       {(title || Icon || headerAction) && (
         <div className="px-4 sm:px-6 pt-6 pb-3 relative z-10">
           <div className="flex items-start justify-between gap-4">
@@ -44,9 +44,9 @@ export function Card({
               )}
               <div>
                 {title && (
-                  <h3 className="font-display text-lg font-semibold text-white tracking-tight">{title}</h3>
+                  <h3 className="font-display text-lg font-semibold text-nature-ink tracking-tight">{title}</h3>
                 )}
-                {subtitle && <p className="text-sm text-gray-400 mt-1">{subtitle}</p>}
+                {subtitle && <p className="text-sm text-nature-muted mt-1">{subtitle}</p>}
               </div>
             </div>
             {headerAction}
