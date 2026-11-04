@@ -72,7 +72,7 @@ export function Chat() {
             <Soulie size={38} mood="happy" />
           </div>
           <div className="min-w-0 flex-1">
-            <h1 className="font-display text-lg font-semibold text-white leading-tight">Soulie IA</h1>
+            <h1 className="font-display text-lg font-semibold text-nature-ink leading-tight">Soulie IA</h1>
             <p className="text-xs text-nature-accent truncate">
               {busy ? 'digitando...' : 'online'}
             </p>
@@ -85,7 +85,7 @@ export function Chat() {
           aria-live="polite"
         >
           <div className="flex justify-center py-1">
-            <span className="text-[11px] font-medium text-gray-400 bg-nature-surface px-3 py-1 rounded-full shadow-soft">
+            <span className="text-[11px] font-medium text-nature-muted bg-nature-surface px-3 py-1 rounded-full shadow-soft">
               Hoje
             </span>
           </div>
@@ -98,11 +98,11 @@ export function Chat() {
                   className={`max-w-[85%] sm:max-w-[75%] px-4 py-2.5 text-sm leading-relaxed ${
                     mine
                       ? 'bg-nature-brand text-white rounded-2xl rounded-br-md shadow-card'
-                      : 'bg-nature-surface text-gray-200 rounded-2xl rounded-bl-md shadow-soft'
+                      : 'bg-nature-surface text-nature-ink border border-nature-border/80 rounded-2xl rounded-bl-md shadow-soft'
                   }`}
                 >
                   <span className="whitespace-pre-wrap break-words">{line.text}</span>
-                  <span className={`relative top-1.5 float-right ml-3 mb-0.5 text-[11px] leading-none ${mine ? 'text-white/70' : 'text-gray-500'}`}>
+                  <span className={`relative top-1.5 float-right ml-3 mb-0.5 text-[11px] leading-none ${mine ? 'text-white/75' : 'text-nature-muted'}`}>
                     {formatTime(line.at)}
                   </span>
                 </div>
@@ -122,7 +122,7 @@ export function Chat() {
         </div>
 
         {error && (
-          <p className="shrink-0 mx-4 sm:mx-6 lg:mx-8 mb-2 rounded-lg bg-red-500/10 border border-red-500/30 px-4 py-2 text-sm text-red-400">{error}</p>
+          <p className="shrink-0 mx-4 sm:mx-6 lg:mx-8 mb-2 rounded-lg bg-red-500/10 border border-red-500/30 px-4 py-2 text-sm text-red-600">{error}</p>
         )}
 
         <form
@@ -144,10 +144,10 @@ export function Chat() {
               }}
               placeholder="Como separo o plástico?"
               aria-label="Mensagem"
-              className="w-full resize-none bg-transparent text-white placeholder:text-gray-500 text-sm leading-5 max-h-32 outline-none"
+              className="w-full resize-none bg-transparent text-nature-ink placeholder:text-nature-muted text-sm leading-5 max-h-32 outline-none"
             />
             {message.length > 420 && (
-              <span className="text-[10px] text-gray-500 ml-2 mb-0.5 shrink-0">{message.length}/500</span>
+              <span className="text-[10px] text-nature-muted ml-2 mb-0.5 shrink-0">{message.length}/500</span>
             )}
           </div>
           <button

@@ -38,8 +38,8 @@ export function Header() {
 
   const active = (path: string) =>
     location.pathname === path
-      ? 'text-nature-brand bg-nature-surface/50'
-      : 'text-gray-300 hover:text-white hover:bg-nature-surface/30';
+      ? 'text-nature-brand bg-nature-brand/10'
+      : 'text-nature-ink-soft hover:text-nature-brand hover:bg-nature-bg';
 
   useEffect(() => {
     if (!token) {
@@ -75,14 +75,14 @@ export function Header() {
   };
 
   return (
-    <header className="sticky top-0 z-50 w-full bg-nature-bg/90 backdrop-blur-md shadow-soft">
+    <header className="sticky top-0 z-50 w-full bg-nature-surface/90 backdrop-blur-md border-b border-nature-border/80 shadow-soft">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           <Link to="/" className="flex items-center gap-2 group" aria-label="Soulie Home">
             <div className="p-2 bg-nature-surface rounded-lg group-hover:bg-nature-border transition-colors">
               <Leaf className="h-6 w-6 text-nature-brand" />
             </div>
-            <span className="font-display font-bold text-xl text-white group-hover:text-nature-brand transition-colors">
+            <span className="font-display font-bold text-xl text-nature-ink group-hover:text-nature-brand transition-colors">
               Soulie
             </span>
           </Link>
@@ -107,7 +107,7 @@ export function Header() {
                   <button
                     type="button"
                     onClick={() => setShowNotes((v) => !v)}
-                    className="relative p-2 rounded-md text-gray-300 hover:text-white hover:bg-nature-surface"
+                    className="relative p-2 rounded-md text-nature-ink-soft hover:text-nature-ink hover:bg-nature-surface"
                     aria-label="Notificações"
                   >
                     <Bell className="h-5 w-5" />
@@ -118,7 +118,7 @@ export function Header() {
                   {showNotes && (
                     <div className="absolute right-0 mt-2 w-72 sm:w-80 bg-nature-surface rounded-xl shadow-card p-3 z-50">
                       <div className="flex justify-between items-center mb-2">
-                        <p className="text-sm font-medium text-white">Avisos</p>
+                        <p className="text-sm font-medium text-nature-ink">Avisos</p>
                         {notes.length > 0 && (
                           <button type="button" onClick={() => void markRead()} className="text-xs text-nature-brand">
                             Marcar lidos
@@ -131,13 +131,13 @@ export function Header() {
                           <Skeleton className="h-12 w-full rounded-lg" />
                         </div>
                       ) : notes.length === 0 ? (
-                        <p className="text-xs text-gray-500 py-4 text-center">Nenhum aviso novo.</p>
+                        <p className="text-xs text-nature-muted py-4 text-center">Nenhum aviso novo.</p>
                       ) : (
                         <ul className="space-y-2 max-h-64 overflow-y-auto">
                           {notes.map((n) => (
                             <li key={n.id} className="text-sm bg-nature-bg rounded-lg p-2 shadow-soft">
-                              <p className="text-white font-medium">{n.title}</p>
-                              <p className="text-gray-400 text-xs mt-1">{n.body}</p>
+                              <p className="text-nature-ink font-medium">{n.title}</p>
+                              <p className="text-nature-muted text-xs mt-1">{n.body}</p>
                             </li>
                           ))}
                         </ul>
@@ -148,7 +148,7 @@ export function Header() {
                 <button
                   type="button"
                   onClick={logout}
-                  className="hidden sm:inline-flex px-3 py-2 text-sm text-gray-300 hover:text-white"
+                  className="hidden sm:inline-flex px-3 py-2 text-sm text-nature-ink-soft hover:text-nature-ink"
                 >
                   Sair
                 </button>
@@ -165,7 +165,7 @@ export function Header() {
 
             <button
               type="button"
-              className="xl:hidden p-2 rounded-md text-gray-400 hover:text-white hover:bg-nature-surface"
+              className="xl:hidden p-2 rounded-md text-nature-muted hover:text-nature-ink hover:bg-nature-surface"
               onClick={() => setOpen((v) => !v)}
               aria-expanded={open}
             >
@@ -176,7 +176,7 @@ export function Header() {
       </div>
 
       {open && (
-        <div className="xl:hidden bg-nature-bg shadow-soft">
+        <div className="xl:hidden bg-nature-surface border-t border-nature-border shadow-soft">
           <div className="px-4 py-3 space-y-1">
             {links.map((item) => (
               <Link
@@ -193,7 +193,7 @@ export function Header() {
               <button
                 type="button"
                 onClick={() => { logout(); setOpen(false); }}
-                className="w-full text-left px-3 py-3 text-gray-300"
+                className="w-full text-left px-3 py-3 text-nature-ink-soft"
               >
                 Sair
               </button>

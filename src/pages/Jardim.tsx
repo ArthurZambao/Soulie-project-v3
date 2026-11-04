@@ -112,10 +112,10 @@ export function Jardim() {
   return (
     <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-10">
       <header className="mb-8">
-        <h1 className="font-display text-2xl sm:text-3xl font-bold text-white flex items-center gap-3">
+        <h1 className="font-display text-2xl sm:text-3xl font-bold text-nature-ink flex items-center gap-3">
           <Users className="text-nature-brand" /> Jardim Comunitário
         </h1>
-        <p className="text-gray-400">Ranking, convite e o feed de quem está com você.</p>
+        <p className="text-nature-muted">Ranking, convite e o feed de quem está com você.</p>
       </header>
 
       {toast && <p className="mb-4 text-sm text-nature-brand bg-nature-brand/10 rounded-lg px-4 py-2 shadow-soft">{toast}</p>}
@@ -125,11 +125,11 @@ export function Jardim() {
         <div className="max-w-md mx-auto">
           <Card title="Seu jardim" variant="accent">
             <div className="space-y-3">
-              <p className="text-gray-400 text-sm">Crie um jardim ou entre com um código para ver o ranking e o feed da turma.</p>
+              <p className="text-nature-muted text-sm">Crie um jardim ou entre com um código para ver o ranking e o feed da turma.</p>
               <button type="button" onClick={() => void onCreate()} className="w-full py-2.5 rounded-xl btn-brand">Criar jardim</button>
               <div className="flex gap-2">
-                <input value={code} onChange={(e) => setCode(e.target.value)} placeholder="Código de convite" className="flex-1 bg-nature-bg border border-nature-border rounded-xl px-3 py-2 text-white" />
-                <button type="button" onClick={() => void onJoin()} className="px-4 rounded-xl bg-nature-bg text-white shadow-soft">Entrar</button>
+                <input value={code} onChange={(e) => setCode(e.target.value)} placeholder="Código de convite" className="flex-1 bg-nature-bg border border-nature-border rounded-xl px-3 py-2 text-nature-ink" />
+                <button type="button" onClick={() => void onJoin()} className="px-4 rounded-xl bg-nature-bg text-nature-ink shadow-soft">Entrar</button>
               </div>
             </div>
           </Card>
@@ -142,11 +142,11 @@ export function Jardim() {
             <Card title="Seu jardim" variant="accent">
               <div className="space-y-4 text-sm">
                 <div>
-                  <p className="text-white font-medium">{garden.name}</p>
-                  <p className="text-gray-400 mt-1">{garden.members} {garden.members === 1 ? 'membro' : 'membros'}</p>
+                  <p className="text-nature-ink font-medium">{garden.name}</p>
+                  <p className="text-nature-muted mt-1">{garden.members} {garden.members === 1 ? 'membro' : 'membros'}</p>
                 </div>
                 <div>
-                  <p className="text-xs uppercase tracking-wide text-gray-500 mb-2">Código de convite</p>
+                  <p className="text-xs uppercase tracking-wide text-nature-muted mb-2">Código de convite</p>
                   <p className="font-mono text-center text-2xl sm:text-3xl font-bold tracking-[0.22em] text-nature-brand bg-nature-bg rounded-xl px-4 py-3.5 shadow-soft">
                     {garden.inviteCode}
                   </p>
@@ -154,7 +154,7 @@ export function Jardim() {
                 <button
                   type="button"
                   onClick={() => void onLeave()}
-                  className="w-full inline-flex items-center justify-center gap-2 py-2.5 rounded-xl text-sm font-medium text-red-400 bg-red-500/10 shadow-soft hover:bg-red-500/20 hover:text-red-300"
+                  className="w-full inline-flex items-center justify-center gap-2 py-2.5 rounded-xl text-sm font-medium text-red-600 bg-red-500/10 shadow-soft hover:bg-red-500/20 hover:text-red-600"
                 >
                   <LogOut className="w-4 h-4" /> Sair do jardim
                 </button>
@@ -163,9 +163,9 @@ export function Jardim() {
 
             {impact && (
               <Card title="Impacto do jardim" variant="success">
-                <p className="text-gray-300">CO₂ {impact.co2Kg} kg</p>
-                <p className="text-gray-300 mt-1">Água {impact.waterLiters} L</p>
-                <p className="text-gray-300 mt-1">Ações {impact.actions}</p>
+                <p className="text-nature-ink-soft">CO₂ {impact.co2Kg} kg</p>
+                <p className="text-nature-ink-soft mt-1">Água {impact.waterLiters} L</p>
+                <p className="text-nature-ink-soft mt-1">Ações {impact.actions}</p>
               </Card>
             )}
           </div>
@@ -178,7 +178,7 @@ export function Jardim() {
 
             <Card title="Feed" variant="accent">
               <div className="flex flex-col sm:flex-row gap-2 mb-4">
-                <input value={post} onChange={(e) => setPost(e.target.value)} placeholder="Como foi sua ação hoje?" className="flex-1 bg-nature-bg border border-nature-border rounded-lg px-3 py-2 text-white" />
+                <input value={post} onChange={(e) => setPost(e.target.value)} placeholder="Como foi sua ação hoje?" className="flex-1 bg-nature-bg border border-nature-border rounded-lg px-3 py-2 text-nature-ink" />
                 <button type="button" onClick={() => void onPost()} className="px-4 py-2 rounded-lg btn-brand">Publicar</button>
               </div>
               <PageStatus empty={feed.length === 0} emptyText="O feed está quieto." />
@@ -229,10 +229,10 @@ function FeedItem({ post, onLike, onDelete }: { post: FeedPostResponse; onLike: 
             </div>
           )}
           {!loadingComments && comments.map((c) => (
-            <p key={c.id} className="text-sm text-gray-400"><span className="text-white">{c.author}:</span> {c.text}</p>
+            <p key={c.id} className="text-sm text-nature-muted"><span className="text-nature-ink">{c.author}:</span> {c.text}</p>
           ))}
           <div className="flex gap-2">
-            <input value={text} onChange={(e) => setText(e.target.value)} className="flex-1 bg-nature-bg border border-nature-border rounded-lg px-2 py-1 text-sm text-white" />
+            <input value={text} onChange={(e) => setText(e.target.value)} className="flex-1 bg-nature-bg border border-nature-border rounded-lg px-2 py-1 text-sm text-nature-ink" />
             <button type="button" onClick={() => void send()} className="text-sm text-nature-brand">Comentar</button>
           </div>
         </div>

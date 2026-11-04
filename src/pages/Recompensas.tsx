@@ -39,14 +39,14 @@ export function Recompensas() {
     <div className="max-w-5xl mx-auto px-4 sm:px-6 py-10">
       <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-8">
         <div>
-          <h1 className="font-display text-3xl font-bold text-white flex items-center gap-2">
+          <h1 className="font-display text-3xl font-bold text-nature-ink flex items-center gap-2">
             <Gift className="text-nature-brand" /> Recompensas
           </h1>
-          <p className="text-gray-400 mt-1">Troque seu XP por itens do jardim.</p>
+          <p className="text-nature-muted mt-1">Troque seu XP por itens do jardim.</p>
         </div>
         <div className="rounded-2xl bg-nature-surface px-5 py-3 shadow-card">
-          <p className="text-[10px] uppercase tracking-wide text-gray-500">Seu saldo</p>
-          <p className="font-mono text-2xl font-bold text-white">{xp} <span className="text-sm text-nature-brand">XP</span></p>
+          <p className="text-[10px] uppercase tracking-wide text-nature-muted">Seu saldo</p>
+          <p className="font-mono text-2xl font-bold text-nature-ink">{xp} <span className="text-sm text-nature-brand">XP</span></p>
         </div>
       </div>
 
@@ -54,7 +54,7 @@ export function Recompensas() {
 
       {!loading && !error && (
         <>
-          <h2 className="text-white font-display text-xl mb-4">Catálogo</h2>
+          <h2 className="text-nature-ink font-display text-xl mb-4">Catálogo</h2>
           <PageStatus empty={catalog.length === 0} emptyText="Catálogo vazio." />
           <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6 mb-12">
             {catalog.map((item) => {
@@ -70,7 +70,7 @@ export function Recompensas() {
                           <Icon className="w-6 h-6" />
                         </span>
                         {missing > 0 ? (
-                          <span className="shrink-0 inline-flex items-center gap-1 whitespace-nowrap text-xs text-gray-400 bg-nature-bg rounded-full px-2.5 py-1">
+                          <span className="shrink-0 inline-flex items-center gap-1 whitespace-nowrap text-xs text-nature-muted bg-nature-bg rounded-full px-2.5 py-1">
                             <Lock className="w-3 h-3" /> Bloqueado
                           </span>
                         ) : (
@@ -79,9 +79,9 @@ export function Recompensas() {
                           </span>
                         )}
                       </div>
-                      <h3 className="font-display text-lg font-semibold text-white leading-snug mt-4">{item.benefits}</h3>
+                      <h3 className="font-display text-lg font-semibold text-nature-ink leading-snug mt-4">{item.benefits}</h3>
                       <p className="font-mono text-2xl text-nature-brand mt-4">
-                        {item.cost} <span className="text-sm text-gray-400">XP</span>
+                        {item.cost} <span className="text-sm text-nature-muted">XP</span>
                       </p>
                       <div className="mt-3 h-1.5 rounded-full bg-nature-bg overflow-hidden">
                         <div
@@ -89,7 +89,7 @@ export function Recompensas() {
                           style={{ width: `${Math.min(100, item.cost === 0 ? 100 : (xp / item.cost) * 100)}%` }}
                         />
                       </div>
-                      <p className="text-xs text-gray-500 mt-2">
+                      <p className="text-xs text-nature-muted mt-2">
                         {missing > 0 ? `Faltam ${missing} XP para resgatar` : 'Você já pode resgatar'}
                       </p>
                       <span className="mt-auto pt-5 w-full text-center text-sm rounded-xl px-4 py-2.5 btn-brand">
@@ -102,7 +102,7 @@ export function Recompensas() {
             })}
           </div>
 
-          <h2 className="text-white font-display text-xl mb-4">Já resgatadas</h2>
+          <h2 className="text-nature-ink font-display text-xl mb-4">Já resgatadas</h2>
           <PageStatus empty={mine.length === 0} emptyText="Você ainda não resgatou nada." />
           <ul className="space-y-2">
             {mine.map((r) => (
@@ -110,11 +110,11 @@ export function Recompensas() {
                 <div className="flex items-center gap-3 min-w-0">
                   <CheckCircle2 className="w-5 h-5 text-nature-success shrink-0" />
                   <div className="min-w-0">
-                    <p className="text-white text-sm truncate">{r.benefits}</p>
-                    <p className="text-xs text-gray-500">Gastou {r.pointsSpent} XP</p>
+                    <p className="text-nature-ink text-sm truncate">{r.benefits}</p>
+                    <p className="text-xs text-nature-muted">Gastou {r.pointsSpent} XP</p>
                   </div>
                 </div>
-                <p className="text-xs text-gray-400 shrink-0">restou {r.remainingPoints}</p>
+                <p className="text-xs text-nature-muted shrink-0">restou {r.remainingPoints}</p>
               </li>
             ))}
           </ul>

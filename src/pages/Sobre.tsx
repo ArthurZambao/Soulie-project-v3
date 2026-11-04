@@ -6,21 +6,21 @@ export function Sobre() {
   return (
     <div className="w-full max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-12 space-y-12 sm:space-y-16">
       <section className="text-center space-y-4">
-        <h1 className="font-display text-3xl sm:text-4xl md:text-5xl font-extrabold text-white">Nossa Missão</h1>
-        <p className="text-lg sm:text-xl text-gray-400 max-w-3xl mx-auto">
+        <h1 className="font-display text-3xl sm:text-4xl md:text-5xl font-extrabold text-nature-ink">Nossa Missão</h1>
+        <p className="text-lg sm:text-xl text-nature-muted max-w-3xl mx-auto">
           Fechar a lacuna entre a intenção e a ação sustentável com suporte contínuo e gamificação.
         </p>
       </section>
 
       <section className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
         <Card title="O Problema" icon={Target} variant="warning">
-          <p className="text-gray-400 leading-relaxed">
+          <p className="text-nature-muted leading-relaxed">
             Estudos apontam que 81% das pessoas não mantêm hábitos ecológicos sem suporte. Sem feedback,
             economizar água ou separar o lixo some da rotina.
           </p>
         </Card>
         <Card title="Nossa Solução" icon={Sprout} variant="success">
-          <p className="text-gray-400 leading-relaxed">
+          <p className="text-nature-muted leading-relaxed">
             O Soulie liga a planta virtual às ações reais. Missões, XP, jardim e chat com a IA dão um motivo
             visível para continuar.
           </p>
@@ -28,7 +28,7 @@ export function Sobre() {
       </section>
 
       <section>
-        <h2 className="font-display text-xl sm:text-2xl font-bold text-white mb-8 flex items-center gap-3 pb-1">
+        <h2 className="font-display text-xl sm:text-2xl font-bold text-nature-ink mb-8 flex items-center gap-3 pb-1">
           <Gamepad2 className="text-nature-brand" /> Por que gamificação?
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -39,25 +39,25 @@ export function Sobre() {
           ].map((item) => (
             <div key={item.t} className="bg-nature-surface p-6 rounded-xl shadow-card">
               <p className="font-mono text-xl font-bold text-nature-brand mb-2">{item.n}</p>
-              <h3 className="font-display text-white font-semibold mb-2">{item.t}</h3>
-              <p className="text-sm text-gray-400">{item.d}</p>
+              <h3 className="font-display text-nature-ink font-semibold mb-2">{item.t}</h3>
+              <p className="text-sm text-nature-muted">{item.d}</p>
             </div>
           ))}
         </div>
       </section>
 
       <section>
-        <h2 className="font-display text-xl sm:text-2xl font-bold text-white mb-8 flex items-center gap-3 pb-1">
+        <h2 className="font-display text-xl sm:text-2xl font-bold text-nature-ink mb-8 flex items-center gap-3 pb-1">
           <Route className="text-nature-accent" /> Roadmap 2026
         </h2>
         <div className="space-y-4">
           {ROADMAP.map((item) => (
             <div key={item.phase} className="flex flex-col sm:flex-row sm:items-center gap-4 bg-nature-surface p-4 rounded-lg shadow-soft">
               <div className="w-32 shrink-0">
-                <span className="text-sm font-bold text-gray-500 uppercase">{item.phase}</span>
-                <p className="text-xs text-gray-400">{item.date}</p>
+                <span className="text-sm font-bold text-nature-muted uppercase">{item.phase}</span>
+                <p className="text-xs text-nature-muted">{item.date}</p>
               </div>
-              <h4 className={`flex-grow text-lg ${item.status === 'current' ? 'text-nature-brand font-bold' : 'text-white'}`}>
+              <h4 className={`flex-grow text-lg ${item.status === 'current' ? 'text-nature-brand font-bold' : 'text-nature-ink'}`}>
                 {item.title}
               </h4>
               {item.status === 'completed' && (
@@ -71,7 +71,7 @@ export function Sobre() {
                 </span>
               )}
               {item.status === 'pending' && (
-                <span className="px-2.5 py-0.5 rounded-full text-xs text-gray-400 bg-nature-bg shadow-soft">Pendente</span>
+                <span className="px-2.5 py-0.5 rounded-full text-xs text-nature-muted bg-nature-bg shadow-soft">Pendente</span>
               )}
             </div>
           ))}

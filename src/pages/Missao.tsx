@@ -91,7 +91,7 @@ export function Missao() {
   if (!mission) {
     return (
       <div className="max-w-xl mx-auto px-4 py-16 text-center">
-        <h2 className="text-2xl font-bold text-white mb-3">Missão não encontrada</h2>
+        <h2 className="text-2xl font-bold text-nature-ink mb-3">Missão não encontrada</h2>
         <Link to="/dashboard" className="text-nature-brand">Voltar</Link>
       </div>
     );
@@ -99,7 +99,7 @@ export function Missao() {
 
   return (
     <div className="max-w-2xl mx-auto px-4 sm:px-6 py-10">
-      <Link to="/dashboard" className="text-gray-400 hover:text-white">← Missões</Link>
+      <Link to="/dashboard" className="text-nature-muted hover:text-nature-ink">← Missões</Link>
       <Card
         className="mt-6"
         variant="accent"
@@ -111,14 +111,14 @@ export function Missao() {
           </span>
         )}
       >
-        <p className="text-gray-300 leading-relaxed">{mission.desc}</p>
+        <p className="text-nature-ink-soft leading-relaxed">{mission.desc}</p>
         {mission.done && (
           <p className="mt-4 text-nature-success text-sm">Você já concluiu esta missão neste período.</p>
         )}
 
         {!mission.done && (
           <div className="mt-6 space-y-4">
-            <p className="text-sm font-medium text-white">Foto da evidência</p>
+            <p className="text-sm font-medium text-nature-ink">Foto da evidência</p>
             <label
               onDragOver={(e) => { e.preventDefault(); setDragOver(true); }}
               onDragLeave={() => setDragOver(false)}
@@ -146,7 +146,7 @@ export function Missao() {
               {preview && file ? (
                 <>
                   <img src={preview} alt="Prévia da evidência" className="max-h-56 w-auto rounded-xl object-contain shadow-card" />
-                  <p className="mt-4 text-sm text-white font-medium truncate max-w-full">{file.name}</p>
+                  <p className="mt-4 text-sm text-nature-ink font-medium truncate max-w-full">{file.name}</p>
                   <p className="mt-1 text-xs text-nature-accent">Clique para escolher outra foto</p>
                 </>
               ) : (
@@ -154,9 +154,9 @@ export function Missao() {
                   <span className="mb-4 flex h-14 w-14 items-center justify-center rounded-2xl bg-nature-brand/15 text-nature-brand shadow-soft">
                     <ImagePlus className="h-7 w-7" />
                   </span>
-                  <p className="font-display text-lg font-semibold text-white">Enviar foto da evidência</p>
-                  <p className="mt-1 text-sm text-gray-400">Clique aqui ou arraste a imagem para esta área</p>
-                  <p className="mt-3 text-xs text-gray-500">JPG, PNG ou WEBP</p>
+                  <p className="font-display text-lg font-semibold text-nature-ink">Enviar foto da evidência</p>
+                  <p className="mt-1 text-sm text-nature-muted">Clique aqui ou arraste a imagem para esta área</p>
+                  <p className="mt-3 text-xs text-nature-muted">JPG, PNG ou WEBP</p>
                 </>
               )}
             </label>
@@ -168,7 +168,7 @@ export function Missao() {
                   pickFile(null);
                   if (inputRef.current) inputRef.current.value = '';
                 }}
-                className="inline-flex items-center gap-1.5 text-sm text-gray-400 hover:text-white"
+                className="inline-flex items-center gap-1.5 text-sm text-nature-muted hover:text-nature-ink"
               >
                 <X className="h-4 w-4" /> Remover foto
               </button>
@@ -188,12 +188,12 @@ export function Missao() {
 
         {result && (
           <div className="mt-6 rounded-xl bg-nature-bg p-4 text-sm shadow-soft">
-            <p className="text-white font-medium">Status: {result.status}</p>
-            {result.status === 'PENDING' && <p className="text-gray-400 mt-2">A IA ainda está olhando a foto. Esta tela atualiza sozinha.</p>}
-            {result.reason && <p className="text-gray-300 mt-2">{result.reason}</p>}
+            <p className="text-nature-ink font-medium">Status: {result.status}</p>
+            {result.status === 'PENDING' && <p className="text-nature-muted mt-2">A IA ainda está olhando a foto. Esta tela atualiza sozinha.</p>}
+            {result.reason && <p className="text-nature-ink-soft mt-2">{result.reason}</p>}
             {result.success && <p className="text-nature-success mt-2">Aprovado. +{result.xpGained} XP</p>}
             {result.aiDetections?.length > 0 && (
-              <ul className="mt-2 text-gray-400 list-disc pl-4">
+              <ul className="mt-2 text-nature-muted list-disc pl-4">
                 {result.aiDetections.map((d) => <li key={d}>{d}</li>)}
               </ul>
             )}
