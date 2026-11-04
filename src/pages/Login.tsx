@@ -1,6 +1,7 @@
 import { useForm } from 'react-hook-form';
 import { Link, Navigate, useNavigate, useSearchParams } from 'react-router-dom';
 import { useState } from 'react';
+import { Eye, EyeOff } from 'lucide-react';
 import { Card } from '../components/Card';
 import { useAuth } from '../context/AuthContext';
 import { toErrorMessage } from '../api/http';
@@ -20,6 +21,7 @@ export function Login() {
   const navigate = useNavigate();
   const [params] = useSearchParams();
   const [error, setError] = useState<string | null>(null);
+  const [showPassword, setShowPassword] = useState(false);
   const { register, handleSubmit, formState: { errors, isSubmitting } } = useForm<LoginForm>();
   const from = params.get('from') || '/dashboard';
   const banner = params.get('msg');
@@ -59,7 +61,18 @@ export function Login() {
           </div>
           <div>
             <label htmlFor="password" className="text-sm text-gray-300">Senha</label>
-            <input id="password" type="password" className={`${field} ${errors.password ? 'border-red-500' : 'border-nature-border'}`} {...register('password', { required: 'Informe a senha' })} />
+            <div className="relative">
+              <input id="password" type={showPassword ? 'text' : 'password'} className={`${field} pr-12 ${errors.password ? 'border-red-500' : 'border-nature-border'}`} {...register('password', { required: 'Informe a senha' })} />
+              <button
+                type="button"
+                onClick={() => setShowPassword((visible) => !visible)}
+                className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-white"
+                aria-label={showPassword ? 'Ocultar senha' : 'Ver senha'}
+                aria-pressed={showPassword}
+              >
+                {showPassword ? <EyeOff size={18} aria-hidden="true" /> : <Eye size={18} aria-hidden="true" />}
+              </button>
+            </div>
             {errors.password && <p className="text-sm text-red-400 mt-1">{errors.password.message}</p>}
           </div>
           <button type="submit" disabled={isSubmitting} className="w-full py-3 rounded-lg btn-brand font-semibold disabled:opacity-50">
