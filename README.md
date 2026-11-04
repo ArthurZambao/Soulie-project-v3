@@ -87,7 +87,7 @@ Senha de exemplo da API: `Soulie@2026` (8 caracteres, maiúscula, minúscula, n�
 
 - Repositório GitHub: [https://github.com/Nexus-Solution-FIAP/Soulie-project-v3](https://github.com/Nexus-Solution-FIAP/Soulie-project-v3)
 - Vídeo no YouTube: https://youtu.be/743BkBS8Bsw
-- Front na Vercel: _preencher após o deploy_
+- Front na Vercel: https://soulie-one.vercel.app
 - **API Java publicada:** _preencher com a URL remota_ (ex.: Render)
 
 No deploy da Vercel, configure `VITE_API_URL` com a URL da API. No back-end, acrescente a origem da Vercel em `CORS_ALLOWED_ORIGINS`.
