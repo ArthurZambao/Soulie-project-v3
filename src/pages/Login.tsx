@@ -1,0 +1,86 @@
+import { useForm } from 'react-hook-form';
+import { Link, Navigate, useNavigate, useSearchParams } from 'react-router-dom';
+import { useState } from 'react';
+import { Eye, EyeOff } from 'lucide-react';
+import { Card } from '../components/Card';
+import { useAuth } from '../context/AuthContext';
+import { toErrorMessage } from '../api/http';
+
+interface LoginForm {
+  email: string;
+  password: string;
+}
+
+const MESSAGES: Record<string, string> = {
+  login: 'Faça login para acessar essa página.',
+  created: 'Conta criada. Entre com o mesmo e-mail e senha.',
+};
+
+export function Login() {
+  const { token, login } = useAuth();
+  const navigate = useNavigate();
+  const [params] = useSearchParams();
+  const [error, setError] = useState<string | null>(null);
+  const [showPassword, setShowPassword] = useState(false);
+  const { register, handleSubmit, formState: { errors, isSubmitting } } = useForm<LoginForm>();
+  const from = params.get('from') || '/dashboard';
+  const banner = params.get('msg');
+
+  if (token) return <Navigate to="/dashboard" replace />;
+
+  const onSubmit = async (data: LoginForm) => {
+    setError(null);
+    try {
+      await login(data.email, data.password);
+      navigate(from.startsWith('/') ? from : '/dashboard');
+    } catch (err) {
+      setError(toErrorMessage(err));
+    }
+  };
+
+  const field = 'w-full bg-nature-bg border rounded-lg px-4 py-3 text-nature-ink';
+
+  return (
+    <div className="max-w-md mx-auto px-4 py-12 sm:py-16">
+      <h1 className="font-display text-3xl font-bold text-nature-ink mb-6">Entrar</h1>
+      {banner && MESSAGES[banner] && (
+        <p className="mb-4 rounded-lg border border-nature-brand/30 bg-nature-brand/10 px-4 py-3 text-sm text-nature-brand">
+          {MESSAGES[banner]}
+        </p>
+      )}
+
+      <Card variant="brand">
+        <form onSubmit={handleSubmit(onSubmit)} className="space-y-4" noValidate>
+          {error && <p className="text-sm text-red-600">{error}</p>}
+          <div>
+            <label htmlFor="email" className="text-sm text-nature-ink-soft">E-mail</label>
+            <input id="email" type="email" className={`${field} ${errors.email ? 'border-red-500' : 'border-nature-border'}`} {...register('email', { required: 'Informe o e-mail' })} />
+            {errors.email && <p className="text-sm text-red-600 mt-1">{errors.email.message}</p>}
+          </div>
+          <div>
+            <label htmlFor="password" className="text-sm text-nature-ink-soft">Senha</label>
+            <div className="relative">
+              <input id="password" type={showPassword ? 'text' : 'password'} className={`${field} pr-12 ${errors.password ? 'border-red-500' : 'border-nature-border'}`} {...register('password', { required: 'Informe a senha' })} />
+              <button
+                type="button"
+                onClick={() => setShowPassword((visible) => !visible)}
+                className="absolute right-3 top-1/2 -translate-y-1/2 text-nature-muted hover:text-nature-ink"
+                aria-label={showPassword ? 'Ocultar senha' : 'Ver senha'}
+                aria-pressed={showPassword}
+              >
+                {showPassword ? <EyeOff size={18} aria-hidden="true" /> : <Eye size={18} aria-hidden="true" />}
+              </button>
+            </div>
+            {errors.password && <p className="text-sm text-red-600 mt-1">{errors.password.message}</p>}
+          </div>
+          <button type="submit" disabled={isSubmitting} className="w-full py-3 rounded-lg btn-brand font-semibold disabled:opacity-50">
+            {isSubmitting ? 'Entrando...' : 'Entrar'}
+          </button>
+        </form>
+        <p className="text-sm text-nature-muted mt-4">
+          Ainda não tem conta? <Link to="/cadastro" className="text-nature-brand">Cadastre-se</Link>
+        </p>
+      </Card>
+    </div>
+  );
+}
