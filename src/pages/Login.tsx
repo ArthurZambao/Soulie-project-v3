@@ -42,9 +42,7 @@ export function Login() {
 
   return (
     <div className="max-w-md mx-auto px-4 py-12 sm:py-16">
-      <h1 className="font-display text-3xl font-bold text-white mb-2">Entrar</h1>
-      <p className="text-gray-400 mb-6">Use o e-mail cadastrado. Exemplo de senha da API: Soulie@2026</p>
-
+      <h1 className="font-display text-3xl font-bold text-white mb-6">Entrar</h1>
       {banner && MESSAGES[banner] && (
         <p className="mb-4 rounded-lg border border-nature-brand/30 bg-nature-brand/10 px-4 py-3 text-sm text-nature-brand">
           {MESSAGES[banner]}

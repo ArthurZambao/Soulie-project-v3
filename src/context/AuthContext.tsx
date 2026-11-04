@@ -51,10 +51,24 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
   const login = async (email: string, password: string) => {
     const { tokenJWT } = await loginRequest(email, password);
+    // Grava o JWT no storage para o getMe autenticar, mas só atualiza o
+    // estado React depois do perfil. Se setTokenState vier antes, o Login
+    // redireciona ao Dashboard enquanto getMe ainda cria as plantas — e o
+    // Promise.all do Dashboard compete no ensureRows (409).
     setToken(tokenJWT);
-    setTokenState(tokenJWT);
-    const profile = await getMe();
-    setUser(profile);
+    setLoading(true);
+    try {
+      const profile = await getMe();
+      setUser(profile);
+      setTokenState(tokenJWT);
+    } catch (err) {
+      setToken(null);
+      setTokenState(null);
+      setUser(null);
+      throw err;
+    } finally {
+      setLoading(false);
+    }
   };
 
   const register = async (name: string, email: string, password: string) => {

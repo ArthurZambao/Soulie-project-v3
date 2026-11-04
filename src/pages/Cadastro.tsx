@@ -55,7 +55,7 @@ export function Cadastro() {
           <div>
             <label htmlFor="password" className="text-sm text-gray-300">Senha</label>
             <div className="relative">
-              <input id="password" type={showPassword ? 'text' : 'password'} className={`${field} pr-12 ${errors.password ? 'border-red-500' : 'border-nature-border'}`} {...register('password', { required: 'Informe a senha', pattern: { value: PASSWORD_RULE, message: 'Senha fora do padrão da API' } })} />
+              <input id="password" type={showPassword ? 'text' : 'password'} className={`${field} pr-12 ${errors.password ? 'border-red-500' : 'border-nature-border'}`} {...register('password', { required: 'Informe a senha', pattern: { value: PASSWORD_RULE, message: 'A senha precisa de 8 caracteres, com maiúscula, minúscula, número e um símbolo (@$!%*?&).' } })} />
               <button
                 type="button"
                 onClick={() => setShowPassword((visible) => !visible)}
