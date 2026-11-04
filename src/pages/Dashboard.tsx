@@ -32,7 +32,10 @@ export function Dashboard() {
   const load = async () => {
     setError(null);
     try {
-      const [s, m, p] = await Promise.all([getSoulie(), getMissions(), getPlants()]);
+      // Soulie primeiro: o back cria as linhas de plantas nesse GET.
+      // Em paralelo com /plants, dois ensureRows competem e a API responde 409.
+      const s = await getSoulie();
+      const [m, p] = await Promise.all([getMissions(), getPlants()]);
       setSoulie(s);
       setMissions(m);
       setPlants(p);
