@@ -1,7 +1,17 @@
 import type { FieldError } from './types';
 
 export const TOKEN_KEY = 'soulie_token';
-export const API_URL = import.meta.env.VITE_API_URL ?? 'http://localhost:8080';
+
+function resolveApiUrl(): string {
+  const url = import.meta.env.VITE_API_URL?.trim();
+  if (url) return url.replace(/\/$/, '');
+  if (import.meta.env.DEV) return 'http://localhost:8080';
+  throw new Error(
+    'VITE_API_URL não está definida. Configure a URL pública da API no ambiente de build (ex.: Vercel).',
+  );
+}
+
+export const API_URL = resolveApiUrl();
 
 let onUnauthorized: (() => void) | null = null;
 
